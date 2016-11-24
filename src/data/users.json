@@ -1,0 +1,10 @@
+{
+  "001":
+    {
+      "login": "vika",
+      "password" : "test",
+      "firstName" : "Victoria",
+      "lastName" : "Syromiatnikova",
+      "role" : "SuperAdmin"
+    }
+}

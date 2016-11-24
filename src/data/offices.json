@@ -1,0 +1,29 @@
+{
+  "offices": [
+    {
+      "name": "Office 1",
+      "state": "California",
+      "jurisdictions": 5,
+      "creationDate": "3/25/2010"
+    },
+    {
+      "name": "Office 2",
+      "state": "Colorado",
+      "jurisdictions": 4,
+      "creationDate": "3/25/2010"
+    },
+    {
+      "name": "Office 3",
+      "state": "Nebraska",
+      "jurisdictions": 3,
+      "creationDate": "3/25/2010"
+    },
+    {
+      "name": "Office 4",
+      "state": "Washington",
+      "jurisdictions": 5,
+      "creationDate": "3/25/2010"
+    }
+
+  ]
+}
