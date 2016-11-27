@@ -1,10 +1,12 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { Ng2TableModule } from 'ng2-table/ng2-table';
+import { PaginationModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -15,10 +17,13 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { LoginComponent } from "./login";
-import { OfficesComponent} from "./offices";
+import { SidebarComponent } from "./sidebar";
+import { LoginComponent } from "./login/login.component";
+import { OfficesComponent} from "./offices/offices.component";
+import { CustomTableComponent } from "./shared/table/table.component";
 //providers
 import { AuthenticationService, OfficeService } from './services/index';
+
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -39,13 +44,17 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
+    SidebarComponent,
     LoginComponent,
-    OfficesComponent,
+    CustomTableComponent,
+    OfficesComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     Ng2TableModule,
+    PaginationModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],

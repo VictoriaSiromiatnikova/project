@@ -3,7 +3,10 @@ import { Http, Response } from '@angular/http';
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+      this.loggedIn = !!localStorage.getItem('currentUserProjectConnect');
+  }
+  private loggedIn = false;
 
   login(username: string, password: string) {
     return this.http.get('../data/users.json').map((response: Response) => {
@@ -11,7 +14,8 @@ export class AuthenticationService {
       for (let id in users){
          let user = users[id];
          if(user.password === password && user.login === username){
-           localStorage.setItem('currentUser', JSON.stringify(user));
+           localStorage.setItem('currentUserProjectConnect', JSON.stringify(user));
+             this.loggedIn = true;
          } else {
            throw new Error('User not authenticated');
          }
@@ -21,6 +25,10 @@ export class AuthenticationService {
 
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentUserProjectConnect');
+      this.loggedIn = false;
+  }
+  isLoggedIn(){
+      return this.loggedIn;
   }
 }

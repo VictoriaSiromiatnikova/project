@@ -16,52 +16,10 @@ import { AppState } from './app.service';
     './app.component.css'
   ],
   template: `
-  <div id="wrapper">
-      <menu>
-         <nav role="navigation">
-          <span class="navbar-item">
-            <a [routerLink]=" ['./offices'] ">
-              Offices
-            </a>
-          </span>
-          <span class="navbar-item">
-            <a [routerLink]=" ['./offices'] ">
-              Jurisdictions
-            </a>
-          </span>
-          <span  class="navbar-item">
-             <a [routerLink]=" ['./offices'] ">
-              Users
-            </a>
-          </span>
-          <span  class="navbar-item">
-            <a [routerLink]=" ['./offices'] ">
-              Reports
-            </a>
-          </span>
-          <span  class="navbar-item">
-            <a [routerLink]=" ['./offices'] ">
-              Fee Schedules
-            </a>
-          </span>
-          <span  class="navbar-item">
-            <a [routerLink]=" ['./offices'] ">
-              Workflows
-            </a>
-          </span>
-          <span  class="navbar-item">
-            <a [routerLink]=" ['./offices'] ">
-              Permit Types
-            </a>
-          </span>
-        </nav>
-      </menu>
-     
-  
+      <sidebar></sidebar>
       <main>
         <router-outlet></router-outlet>
       </main>
-  </div>
   `
 })
 export class AppComponent {

@@ -1,0 +1,8 @@
+<div class="side-bar" *ngIf='isLoggedIn()'>
+    <ul class="nav-list">
+        <li class="nav-item"
+            *ngFor="let route of navRoutes">
+            <a class="nav-link" [routerLink]="route.ref">{{route.name}}</a>
+        </li>
+    </ul>
+</div>

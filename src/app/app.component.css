@@ -13,10 +13,10 @@ span.active {
 .main-area{
   margin: 50px;
 }
-#wrapper{
+main{
   padding-left: 250px;
 }
-menu{
+.side-bar{
   width: 250px;
   z-index: 1000;
   position: fixed;
@@ -26,8 +26,9 @@ menu{
   overflow-y: auto;
   background: #000;
   padding-left: 0px;
+  top:0px;
 }
-menu nav{
+.side-bar nav{
   position: absolute;
   top: 0;
   width: 250px;
@@ -36,14 +37,14 @@ menu nav{
   list-style: none;
 
 }
-.navbar-item{
+.nav-item{
   height: 30px;
   font-size: 18px;
   line-height: 60px;
   display: block;
-  text-align: center;
+  text-align: left;
 }
 
-.navbar-item a{
+.nav-item a{
   color: #FFFFFF;
 }
