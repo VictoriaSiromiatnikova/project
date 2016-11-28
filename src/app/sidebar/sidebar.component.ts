@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import { AuthenticationService } from '../services/index';
 
+
 export interface IRoute {
     ref: string[],
     name: string
@@ -11,10 +12,11 @@ export interface IRoute {
     templateUrl: 'sidebar.html'
 })
 export class SidebarComponent {
-    navRoutes: IRoute[];
+    navRoutesAdmin: IRoute[];
+    navRoutesAll: IRoute[];
 
     constructor(private authService: AuthenticationService) {
-        this.navRoutes = [
+        this.navRoutesAdmin = [
             { name: 'Offices', ref: ['./offices'] },
             { name: 'Jurisdictions', ref: ['./offices'] },
             { name: 'Users', ref: ['./offices'] },
@@ -22,6 +24,13 @@ export class SidebarComponent {
             { name: 'Fee Schedules', ref: ['./offices'] },
             { name: 'Workflows', ref: ['./offices'] },
             { name: 'Permit Types', ref: ['./offices'] }
+        ];
+        this.navRoutesAll = [
+            { name: 'Dashboard', ref: ['./offices'] },
+            { name: 'Permits', ref: ['./offices'] },
+            { name: 'Contractors', ref: ['./offices'] },
+            { name: 'Property Addresses', ref: ['./offices'] },
+            { name: 'Documents', ref: ['./offices'] }
         ];
     }
 

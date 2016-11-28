@@ -7,6 +7,7 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { Ng2TableModule } from 'ng2-table/ng2-table';
 import { PaginationModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -54,6 +55,7 @@ type StoreType = {
     FormsModule,
     Ng2TableModule,
     PaginationModule,
+    DropdownModule,
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })

@@ -1,16 +1,17 @@
-<div class="center-block main-area">
-    <h2>All Offices</h2>
+<div class="center-block main-area offices-area">
+    <h2>All Offices <em>Offices {{length}}</em></h2>
     <p><button class="btn btn-primary">Create New Office</button></p>
-    <customtable></customtable>
-    <ng-table [columns]="columns"
-              [rows]="rows"
-              [config]="config"
-              (tableChanged)="onChangeTable(config)"></ng-table>
-    <pager *ngIf="config.paging" [totalItems]="length"
-           [(ngModel)]="page"
-           (pageChanged)="onChangeTable(config, $event)"
-           [itemsPerPage]="itemsPerPage"
-           class="pagination-sm"
-           previousText="&lsaquo;" nextText="&rsaquo;"></pager>
-    <pre *ngIf="config.paging" class="card card-block card-header">{{startItemOnPageIndex}}-{{endItemOnPageIndex}} Items of {{length}}</pre>
+    <div class="custom-table">
+        <ng-table [columns]="columns"
+                  [rows]="rows"
+                  [config]="config"
+                  (tableChanged)="onChangeTable(config)"></ng-table>
+        <pre *ngIf="config.paging" class="card card-block card-header pull-left">{{startItemOnPageIndex}}-{{endItemOnPageIndex}} Items of {{length}}</pre>
+        <pager *ngIf="config.paging" [totalItems]="length"
+               [(ngModel)]="page"
+               (pageChanged)="onChangeTable(config, $event)"
+               [itemsPerPage]="itemsPerPage"
+               class="pagination-sm pull-left"
+               previousText="&lsaquo;" nextText="&rsaquo;"></pager>
+    </div>
 </div>

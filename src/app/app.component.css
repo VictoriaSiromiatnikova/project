@@ -16,6 +16,11 @@ span.active {
 main{
   padding-left: 250px;
 }
+/*pager*/
+.custom-table pager ul{
+  margin: 5px;
+}
+/*sidebar*/
 .side-bar{
   width: 250px;
   z-index: 1000;
@@ -24,9 +29,10 @@ main{
   height: 100%;
   margin-left: -250px;
   overflow-y: auto;
-  background: #000;
-  padding-left: 0px;
+  background: #F9F9F9;
+  padding: 20px;
   top:0px;
+  color: #555555;
 }
 .side-bar nav{
   position: absolute;
@@ -37,14 +43,40 @@ main{
   list-style: none;
 
 }
+.side-bar .nav-block .title{
+  font-size: 10px;
+}
+.side-bar .nav-block .title:after
+{
+  content: ' ';
+  display: block;
+  border-bottom: 1px solid #555555;
+}
+.nav-block{
+  margin-bottom: 30px;
+}
+.nav-block .nav-dropdown{
+  margin-top: 10px;
+}
+.nav-list{
+  padding-left: 20px;
+}
 .nav-item{
   height: 30px;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 60px;
   display: block;
   text-align: left;
 }
+/*.nav-item:hover{
+  background-color: #FFFFFF;
+}*/
 
 .nav-item a{
-  color: #FFFFFF;
+  color: #555555;
+}
+/*Offices*/
+.offices-area h2 em{
+  font-size: 10px;
+  color: #555555;
 }

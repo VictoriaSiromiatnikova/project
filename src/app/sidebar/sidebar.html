@@ -1,8 +1,56 @@
 <div class="side-bar" *ngIf='isLoggedIn()'>
-    <ul class="nav-list">
-        <li class="nav-item"
-            *ngFor="let route of navRoutes">
-            <a class="nav-link" [routerLink]="route.ref">{{route.name}}</a>
-        </li>
-    </ul>
+    <h3>Logo</h3>
+    <div class="nav-block">
+        <div class="title">VIEW BY</div>
+        <div class="nav-dropdown">
+            <div class="btn-group" dropdown>
+                <button id="view-by-office" type="button" class="btn btn-primary" dropdownToggle [disabled]="disabled">
+                    Office: All <span class="caret"></span>
+                </button>
+                <ul dropdownMenu role="menu" aria-labelledby="single-button">
+                    <li role="menuitem"><a class="dropdown-item">Action</a></li>
+                    <li role="menuitem"><a class="dropdown-item">Another action</a></li>
+                    <li role="menuitem"><a class="dropdown-item">Something else here</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <div class="btn-group" dropdown>
+                <button id="view-by-jurisdiction" type="button" class="btn btn-primary" dropdownToggle [disabled]="disabled">
+                    Jurisd: All <span class="caret"></span>
+                </button>
+                <ul dropdownMenu role="menu" aria-labelledby="single-button">
+                    <li role="menuitem"><a class="dropdown-item">Action</a></li>
+                    <li role="menuitem"><a class="dropdown-item">Another action</a></li>
+                    <li role="menuitem"><a class="dropdown-item">Something else here</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="nav-block">
+        <div class="title">ADMIN ONLY</div>
+        <ul class="nav-list">
+            <li class="nav-item"
+                *ngFor="let route of navRoutesAdmin">
+                <a class="nav-link" [routerLink]="route.ref">{{route.name}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="nav-block">
+        <div class="title">ALL USERS</div>
+        <ul class="nav-list">
+            <li class="nav-item"
+                *ngFor="let route of navRoutesAll">
+                <a class="nav-link" [routerLink]="route.ref">{{route.name}}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="nav-block">
+        <div class="title"></div>
+        <ul class="nav-list">
+            <li class="nav-item"><a class="nav-link">Name</a></li>
+            <li class="nav-item"><a class="nav-link">Log Out</a></li>
+        </ul>
+    </div>
+
 </div>
