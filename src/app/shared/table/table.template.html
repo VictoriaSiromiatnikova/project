@@ -1,11 +1,23 @@
-<ng-table [columns]="columns"
-          [rows]="rows"
-          [config]="config"
-          (tableChanged)="onChangeTable(config)"></ng-table>
-<pager *ngIf="config.paging" [totalItems]="length"
-       [(ngModel)]="page"
-       (pageChanged)="onChangeTable(config, $event)"
-       [itemsPerPage]="itemsPerPage"
-       class="pagination-sm"
-       previousText="&lsaquo;" nextText="&rsaquo;"></pager>
-<pre *ngIf="config.paging" class="card card-block card-header">{{startItemOnPageIndex}}-{{endItemOnPageIndex}} Items of {{length}}</pre>
+<div class="custom-table">
+    <ng-table [columns]="columns"
+              [rows]="rows"
+              [config]="config"
+              (tableChanged)="onChangeTable(config)"></ng-table>
+    <pre *ngIf="config.paging" class="card card-block card-header pull-left">{{startItemOnPageIndex}}-{{endItemOnPageIndex}} Items of {{totalItems}}</pre>
+    <pager *ngIf="config.paging" [totalItems]="totalItems"
+           [(ngModel)]="page"
+           (pageChanged)="onChangeTable(config, $event)"
+           [itemsPerPage]="itemsPerPage"
+           class="pagination-sm pull-left"
+           previousText="&lsaquo;" nextText="&rsaquo;"></pager>
+    <div class="btn-group" dropdown>
+        <button id="per-page-button" type="button" class="btn" dropdownToggle>
+            {{itemsPerPage}} Per Page <span class="caret"></span>
+        </button>
+        <ul dropdownMenu role="menu" aria-labelledby="per-page-button" (change)="onChangeItemsPerPage($event.target.value)">
+            <li *ngFor="let itemsPerPageItem of itemsPerPageList">
+                <a class="dropdown-item" (click)="onChangeItemsPerPage(itemsPerPageItem)">{{itemsPerPageItem}}</a>
+            </li>
+        </ul>
+    </div>
+</div>

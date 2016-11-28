@@ -1,0 +1,100 @@
+{
+  "jurisdictions": [
+    {
+      "name": "Jurisdiction 1",
+      "jurisdictionAbbreviation": "QW",
+      "office": "Windsor",
+      "state": "GA",
+      "phone": "555-123-4567",
+      "creationDate": "4/20/2010"
+    },
+    {
+      "name": "Jurisdiction 2",
+      "jurisdictionAbbreviation": "WE",
+      "office": "Fort Collins",
+      "state": "SC",
+      "phone": "555-123-4567",
+      "creationDate": "4/20/2010"
+    },
+    {
+      "name": "Jurisdiction 3",
+      "jurisdictionAbbreviation": "ER",
+      "office": "Windsor",
+      "state": "GA",
+      "phone": "555-123-4567",
+      "creationDate": "4/20/2010"
+    },
+    {
+      "name": "Jurisdiction 4",
+      "jurisdictionAbbreviation": "RT",
+      "office": "Fort Collins",
+      "state": "GA",
+      "phone": "555-123-4567",
+      "creationDate": "4/20/2010"
+    },
+    {
+      "name": "Jurisdiction 5",
+      "jurisdictionAbbreviation": "TY",
+      "office": "Windsor",
+      "state": "SC",
+      "phone": "555-123-4567",
+      "creationDate": "4/20/2010"
+    },
+    {
+      "name": "Jurisdiction 6",
+      "jurisdictionAbbreviation": "YU",
+      "office": "Fort Collins",
+      "state": "CA",
+      "phone": "555-123-4567",
+      "creationDate": "4/20/2010"
+    },
+    {
+      "name": "Jurisdiction 7",
+      "jurisdictionAbbreviation": "RG",
+      "office": "Brookhaven",
+      "state": "GA",
+      "phone": "555-123-4567",
+      "creationDate": "4/20/2010"
+    },
+    {
+      "name": "Jurisdiction 8",
+      "jurisdictionAbbreviation": "FG",
+      "office": "Windsor",
+      "state": "CA",
+      "phone": "555-123-4567",
+      "creationDate": "4/20/2010"
+    },
+    {
+      "name": "Jurisdiction 9",
+      "jurisdictionAbbreviation": "DF",
+      "office": "Fort Collins",
+      "state": "SC",
+      "phone": "555-123-4567",
+      "creationDate": "4/20/2010"
+    },
+    {
+      "name": "Jurisdiction 10",
+      "jurisdictionAbbreviation": "HJ",
+      "office": "Brookhaven",
+      "state": "CA",
+      "phone": "555-123-4567",
+      "creationDate": "4/20/2010"
+    },
+    {
+      "name": "Jurisdiction 11",
+      "jurisdictionAbbreviation": "AS",
+      "office": "Windsor",
+      "state": "SC",
+      "phone": "555-123-4567",
+      "creationDate": "4/20/2010"
+    },
+    {
+      "name": "Jurisdiction 12",
+      "jurisdictionAbbreviation": "BN",
+      "office": "Fort Collins",
+      "state": "CA",
+      "phone": "555-123-4567",
+      "creationDate": "4/20/2010"
+    }
+  ]
+}

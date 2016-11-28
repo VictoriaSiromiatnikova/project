@@ -1,36 +1,48 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnChanges, SimpleChange} from '@angular/core';
 
 @Component({
     selector: 'customtable',
     templateUrl: 'table.template.html'
 })
-export class CustomTableComponent {
+export class CustomTableComponent implements OnChanges{
+    @Input() rows: Array<any>;
+    @Input() columns: Array<any>;
+    @Input() data: any[];
+    @Input() totalItems: number;
     constructor() { }
-    public data: any[] = [];
-    public rows:Array<any> = [];
-    public columns:Array<any> = [];
     public page:number = 1;
     public itemsPerPage:number = 10;
     public startItemOnPageIndex:number = 1;
     public endItemOnPageIndex: number = 1;
-    public totalItems:number = 0;
-    public length:number = 0;
     public config:any = {
         paging: true,
         sorting: {columns: this.columns},
         filtering: {filterString: ''},
         className: ['table-striped', 'table-bordered']
     }
+    public itemsPerPageList: Array<any> = [5, 10, 50];
+    ngOnChanges (changes: {[propKey: string]: SimpleChange}) {
+        if(changes['data']){
+            this.onChangeTable();
+        }
+    }
     public pageChanged(event:any):void {
         console.log('Page changed to: ' + event.page);
         console.log('Number items per page: ' + event.itemsPerPage);
-    };
+    }
     public changePage(page:any, data:Array<any> = this.data):Array<any> {
         let start = (page.page - 1) * page.itemsPerPage;
         let end = page.itemsPerPage > -1 ? (start + page.itemsPerPage) : data.length;
         this.startItemOnPageIndex = start + 1;
         this.endItemOnPageIndex = end > data.length ? data.length : end;
         return data.slice(start, end);
+    }
+
+    public onChangeItemsPerPage(itemsPerPage: number){
+        if(this.itemsPerPage !== itemsPerPage){
+            this.itemsPerPage = itemsPerPage;
+            this.onChangeTable();
+        }
     }
 
     public changeSort(data:any, config:any):any {
@@ -100,7 +112,7 @@ export class CustomTableComponent {
         return filteredData;
     }
 
-    public onChangeTable(config:any, page:any = {page: this.page, itemsPerPage: this.itemsPerPage}):any {
+    public onChangeTable(config:any = this.config, page:any = {page: this.page, itemsPerPage: this.itemsPerPage}):any {
         if (config.filtering) {
             Object.assign(this.config.filtering, config.filtering);
         }
@@ -112,6 +124,6 @@ export class CustomTableComponent {
         let filteredData = this.changeFilter(this.data, this.config);
         let sortedData = this.changeSort(filteredData, this.config);
         this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
-        this.length = sortedData.length;
+        this.totalItems = sortedData.length;
     }
 }

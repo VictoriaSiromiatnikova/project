@@ -20,6 +20,11 @@ main{
 .custom-table pager ul{
   margin: 5px;
 }
+.custom-table .dropdown button{
+  background-color: #F9F9F9;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 /*sidebar*/
 .side-bar{
   width: 250px;

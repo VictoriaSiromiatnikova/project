@@ -18,7 +18,7 @@ export class SidebarComponent {
     constructor(private authService: AuthenticationService) {
         this.navRoutesAdmin = [
             { name: 'Offices', ref: ['./offices'] },
-            { name: 'Jurisdictions', ref: ['./offices'] },
+            { name: 'Jurisdictions', ref: ['./jurisdictions'] },
             { name: 'Users', ref: ['./offices'] },
             { name: 'Reports', ref: ['./offices'] },
             { name: 'Fee Schedules', ref: ['./offices'] },
