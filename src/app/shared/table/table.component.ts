@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChange} from '@angular/core';
+import {Component, Input, Output, OnChanges, EventEmitter, SimpleChange} from '@angular/core';
 
 @Component({
     selector: 'customtable',
@@ -9,23 +9,41 @@ export class CustomTableComponent implements OnChanges{
     @Input() columns: Array<any>;
     @Input() data: any[];
     @Input() totalItems: number;
+    @Input() public config:any;
+    @Output() onDelete = new EventEmitter();
+    @Output() onEdit = new EventEmitter();
     constructor() { }
     public page:number = 1;
     public itemsPerPage:number = 10;
     public startItemOnPageIndex:number = 1;
     public endItemOnPageIndex: number = 1;
-    public config:any = {
-        paging: true,
-        sorting: {columns: this.columns},
-        filtering: {filterString: ''},
-        className: ['table-striped', 'table-bordered']
-    }
     public itemsPerPageList: Array<any> = [5, 10, 50];
     ngOnChanges (changes: {[propKey: string]: SimpleChange}) {
         if(changes['data']){
             this.onChangeTable();
         }
     }
+    private extendColumsWithActions(){
+        this.columns.push({
+            title: '', name: 'actions'
+        })
+    }
+    private extendRowsWithActions(){
+        for(let row of this.rows){
+            row['actions'] = `<a></a>`;
+        }
+        this.extendColumsWithActions();
+    }
+
+    public onCellClicked(event){
+        if(event.column === 'delete'){
+            this.onDelete.emit(event.row);
+        }
+        if(event.column === 'edit'){
+            this.onEdit.emit(event.row);
+        }
+    }
+
     public pageChanged(event:any):void {
         console.log('Page changed to: ' + event.page);
         console.log('Number items per page: ' + event.itemsPerPage);

@@ -9,6 +9,12 @@ import {Jurisdiction} from "../../models/index";
 export class JurisdictionsComponent implements OnInit {
     public data: Jurisdiction[] = [];
     public rows:Array<any> = [];
+    public config: any ={
+        paging: true,
+        sorting: {columns: this.columns},
+        filtering: {filterString: ''},
+        className: ['table-striped', 'table-bordered']
+    }
     public columns:Array<any> = [
         {title: 'Name', name: 'name', sort: 'asc', filtering: {filterString: '', placeholder: 'Filter by Name'}},
         {title: 'Jurisdictions Abbreviation', sort: 'asc', name: 'jurisdictionAbbreviation', },

@@ -1,96 +1,113 @@
 {
   "offices": [
     {
+      "id": 1,
       "name": "Office 1",
       "state": "California",
+      "type": "meritage",
       "jurisdictions": 5,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 2,
       "name": "Office 2",
       "state": "Colorado",
       "jurisdictions": 4,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 3,
       "name": "Office 3",
       "state": "Nebraska",
       "jurisdictions": 3,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 4,
       "name": "Office 4",
       "state": "Washington",
       "jurisdictions": 5,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 5,
       "name": "Office 5",
       "state": "California",
       "jurisdictions": 5,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 6,
       "name": "Office 6",
       "state": "Colorado",
       "jurisdictions": 4,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 7,
       "name": "Office 7",
       "state": "Nebraska",
       "jurisdictions": 3,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 8,
       "name": "Office 8",
       "state": "Washington",
       "jurisdictions": 5,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 9,
       "name": "Office 9",
       "state": "California",
       "jurisdictions": 5,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 10,
       "name": "Office 10",
       "state": "Colorado",
       "jurisdictions": 4,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 11,
       "name": "Office 11",
       "state": "Nebraska",
       "jurisdictions": 3,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 12,
       "name": "Office 12",
       "state": "Washington",
       "jurisdictions": 5,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 13,
       "name": "Office 13",
       "state": "California",
       "jurisdictions": 5,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 14,
       "name": "Office 14",
       "state": "Colorado",
       "jurisdictions": 4,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 15,
       "name": "Office 15",
       "state": "Nebraska",
       "jurisdictions": 3,
       "creationDate": "3/25/2010"
     },
     {
+      "id": 16,
       "name": "Office 16",
       "state": "Washington",
       "jurisdictions": 5,

@@ -14,7 +14,7 @@ span.active {
   margin: 50px;
 }
 main{
-  padding-left: 250px;
+  padding-left: 275px;
 }
 /*pager*/
 .custom-table pager ul{
@@ -84,4 +84,30 @@ main{
 .offices-area h2 em{
   font-size: 10px;
   color: #555555;
+}
+
+/*Table*/
+/*.custom-table td > a.delete, .custom-table td > a.edit{
+  background-color: #286090;
+  display: block;
+  text-align: center;
+  color: #FFFFFF;
+}*/
+.custom-table td > div.delete, .custom-table td > div.edit{
+  text-align: center;
+  cursor: pointer;
+}
+
+/*Office*/
+office .button-area{
+  display: block;
+  margin: 20px 0px;
+}
+office .button-area .cancel{
+  margin-left: 10px;
+}
+
+/*Administrators*/
+.administrators{
+  width: 600px;
 }

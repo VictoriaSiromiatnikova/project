@@ -21,10 +21,14 @@ import { AppState, InternalStateType } from './app.service';
 import { SidebarComponent } from "./sidebar";
 import { LoginComponent } from "./login/login.component";
 import { OfficesComponent} from "./offices/offices.component";
+import { OfficeComponent } from './offices/office.component';
+import { EditLinkComponent } from './offices/edit-link.component';
 import { JurisdictionsComponent} from "./jurisdictions/jurisdictions.component";
 import { CustomTableComponent } from "./shared/table/table.component";
+import {SystemAdministratorsComponent} from "./system.administrators/system.administrators.component";
 //providers
-import { AuthenticationService, OfficeService, JurisdictionService } from './services/index';
+import { AuthenticationService, OfficeService, JurisdictionService, StatesService, SystemAdministratorsService } from './services/index';
+
 
 
 // Application wide providers
@@ -49,7 +53,10 @@ type StoreType = {
     SidebarComponent,
     LoginComponent,
     CustomTableComponent,
+    OfficeComponent,
     OfficesComponent,
+    EditLinkComponent,
+    SystemAdministratorsComponent,
     JurisdictionsComponent
   ],
   imports: [ // import Angular's modules
@@ -67,7 +74,9 @@ type StoreType = {
     APP_PROVIDERS,
     AuthenticationService,
     OfficeService,
-    JurisdictionService
+    JurisdictionService,
+    StatesService,
+    SystemAdministratorsService
   ]
 })
 export class AppModule {

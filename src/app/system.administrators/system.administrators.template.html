@@ -1,6 +1,6 @@
-<div class="center-block main-area offices-area">
-    <h2>All Offices <em>Offices {{totalItems}}</em></h2>
-    <p><button (click)="onCreateNewOffice()" class="btn btn-primary">Create New Office</button></p>
+<div class="administrators">
+    <h3>Office System Administrators</h3>
+    <p><button (click)="onCreateNewAdmin()" class="btn btn-primary">Add Office System Admin</button></p>
     <customtable [columns]="columns"
                  [rows]="rows"
                  [data]="data"
