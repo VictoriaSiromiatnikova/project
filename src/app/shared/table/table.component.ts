@@ -9,9 +9,11 @@ export class CustomTableComponent implements OnChanges{
     @Input() columns: Array<any>;
     @Input() data: any[];
     @Input() totalItems: number;
-    @Input() public config:any;
+    @Input() config:any;
     @Output() onDelete = new EventEmitter();
     @Output() onEdit = new EventEmitter();
+    @Output() onNameClick = new EventEmitter();
+    @Output() onRowClicked = new EventEmitter();
     constructor() { }
     public page:number = 1;
     public itemsPerPage:number = 10;
@@ -22,17 +24,31 @@ export class CustomTableComponent implements OnChanges{
         if(changes['data']){
             this.onChangeTable();
         }
+        if(changes['rows'] && changes['rows'].currentValue.length){
+            this.extendRowsWithActions();
+        }
     }
+    /*
+    * Methods to extend table functionality with actions column
+    * */
     private extendColumsWithActions(){
-        this.columns.push({
-            title: '', name: 'actions'
-        })
+        this.columns = this.columns.concat([
+            { title: '', name: 'delete', sort: false, class:'actions', filtering: false},
+            { title: '', name: 'edit', sort: false, class:'actions', filtering: false }
+        ])
     }
     private extendRowsWithActions(){
-        for(let row of this.rows){
-            row['actions'] = `<a></a>`;
+        if(this.config.actions){
+            for(let row of this.rows){
+                row['delete'] = `<div (click)="deleteClick($event)" name: "delete" class="delete">Delete</div>`;
+                row['edit'] = `<div class="edit" name="edit">Edit</div>`;
+            }
+            for(let row of this.data){
+                row['delete'] = `<div (click)="deleteClick($event)" name: "delete" class="delete">Delete</div>`;
+                row['edit'] = `<div class="edit" name="edit">Edit</div>`;
+            }
+            this.extendColumsWithActions();
         }
-        this.extendColumsWithActions();
     }
 
     public onCellClicked(event){
@@ -42,6 +58,10 @@ export class CustomTableComponent implements OnChanges{
         if(event.column === 'edit'){
             this.onEdit.emit(event.row);
         }
+        if(event.column === 'name'){
+            this.onNameClick.emit(event.row);
+        }
+        this.onRowClicked.emit(event);
     }
 
     public pageChanged(event:any):void {
@@ -143,5 +163,9 @@ export class CustomTableComponent implements OnChanges{
         let sortedData = this.changeSort(filteredData, this.config);
         this.rows = page && config.paging ? this.changePage(page, sortedData) : sortedData;
         this.totalItems = sortedData.length;
+    }
+
+    public deleteClick(event){
+        this.onDelete.emit(event.row);
     }
 }

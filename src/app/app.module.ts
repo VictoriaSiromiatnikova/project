@@ -8,6 +8,8 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
 import { Ng2TableModule } from 'ng2-table/ng2-table';
 import { PaginationModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { ModalModule } from "ng2-modal";
+
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -18,16 +20,27 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { SidebarComponent } from "./sidebar";
-import { LoginComponent } from "./login/login.component";
-import { OfficesComponent} from "./offices/offices.component";
-import { OfficeComponent } from './offices/office.component';
-import { EditLinkComponent } from './offices/edit-link.component';
-import { JurisdictionsComponent} from "./jurisdictions/jurisdictions.component";
+import { SidebarComponent } from "./shared/sidebar/sidebar.component";
+import { LoginComponent } from "./components/login/login.component";
+import { OfficesComponent} from "./components/offices/offices.component";
+import { OfficeComponent } from './components/offices/office.component';
+import { JurisdictionsComponent} from "./components/jurisdictions/jurisdictions.component";
 import { CustomTableComponent } from "./shared/table/table.component";
-import {SystemAdministratorsComponent} from "./system.administrators/system.administrators.component";
+import { ModalDeleteComponent } from "./shared/modal/modal.delete.component";
+import { ModalComponent } from "./shared/modal/modal.component";
+import { SystemAdministratorsComponent } from "./components/system.administrators/system.administrators.component";
+import { SystemAdministratorComponent } from "./components/system.administrators/system.administrator/system.administrator.component";
+import { FormSidebarComponent } from "./shared/form.sidebar/form.sidebar.component";
+import { SystemAdministratorOfficesComponent } from "./components/system.administrators/system.administrator/system.administrator.offices.component";
+import { SystemAdministratorGeneralComponent } from "./components/system.administrators/system.administrator/system.administrator.general.component";
 //providers
-import { AuthenticationService, OfficeService, JurisdictionService, StatesService, SystemAdministratorsService } from './services/index';
+import { OfficeService } from "./components/offices/office.service";
+import { AuthenticationService } from "./shared/services/authentication.service";
+import { JurisdictionService } from "./components/jurisdictions/jurisdiction.service";
+import { StatesService } from "./shared/services/states.service";
+import { SystemAdministratorsService } from "./components/system.administrators/system.administrators.service";
+
+
 
 
 
@@ -53,11 +66,16 @@ type StoreType = {
     SidebarComponent,
     LoginComponent,
     CustomTableComponent,
+    ModalDeleteComponent,
+    ModalComponent,
     OfficeComponent,
     OfficesComponent,
-    EditLinkComponent,
     SystemAdministratorsComponent,
-    JurisdictionsComponent
+    SystemAdministratorComponent,
+    JurisdictionsComponent,
+    FormSidebarComponent,
+    SystemAdministratorOfficesComponent,
+    SystemAdministratorGeneralComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -67,6 +85,7 @@ type StoreType = {
     DropdownModule,
     ReactiveFormsModule,
     HttpModule,
+    ModalModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

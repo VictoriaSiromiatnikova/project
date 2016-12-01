@@ -205,10 +205,10 @@ module.exports = function (options) {
        *
        * See: https://www.npmjs.com/package/copy-webpack-plugin
        */
-      new CopyWebpackPlugin([
+     /*new CopyWebpackPlugin([
         { from: 'src/assets', to: 'assets' },
         { from: 'src/meta'}
-      ]),
+      ]),*/
 
 
       /*

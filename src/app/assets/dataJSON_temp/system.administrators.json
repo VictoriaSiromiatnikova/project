@@ -1,0 +1,39 @@
+{
+  "systemAdministrators": [
+    {
+      "id": 1,
+      "firstName": "Bob",
+      "lastName": "Smith",
+      "phone": "303-784-9834",
+      "email": "email@email.com"
+    },
+    {
+      "id": 2,
+      "firstName": "Suzanne",
+      "lastName": "Wilson",
+      "phone": "303-784-9834",
+      "email": "email@email.com"
+    },
+    {
+      "id": 3,
+      "firstName": "Bob",
+      "lastName": "Smith",
+      "phone": "303-784-9834",
+      "email": "email@email.com"
+    },
+    {
+      "id": 4,
+      "firstName": "Suzanne",
+      "lastName": "Wilson",
+      "phone": "303-784-9834",
+      "email": "email@email.com"
+    },
+    {
+      "id": 5,
+      "firstName": "Bob",
+      "lastName": "Smith",
+      "phone": "303-784-9834",
+      "email": "email@email.com"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<div class="center-block main-area offices-area">
+    <h2>All Offices <em>Offices {{totalItems}}</em></h2>
+    <p><button (click)="onCreateNewOffice()" class="btn btn-primary">Create New Office</button></p>
+    <customtable [columns]="columns"
+                 [rows]="rows"
+                 [data]="data"
+                 [totalItems]="totalItems"
+                 [config]="config"
+                 (onDelete)="onDeleteClick($event)"
+                 (onEdit)="onEditClick($event)"
+                 (onNameClick)="onNameClick($event)"></customtable>
+    <modalDelete #deleteModal
+                 [formErrors] = "formErrors"
+                 (onDeleteClick)="onDeleteClick()"
+                 (onDelete) = "removeOffice($event)"></modalDelete>
+</div>

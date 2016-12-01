@@ -1,7 +1,7 @@
 /*
  * Angular 2 decorators and services
  */
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ViewContainerRef } from '@angular/core';
 
 import { AppState } from './app.service';
 
@@ -13,7 +13,7 @@ import { AppState } from './app.service';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
-    './app.component.css'
+    'assets/css/app.component.css'
   ],
   template: `
       <sidebar></sidebar>
@@ -25,11 +25,15 @@ import { AppState } from './app.service';
 export class AppComponent {
   name = 'Project Connect';
   url = 'https:/test';
-
+  private viewContainerRef: ViewContainerRef;
   constructor(
-    public appState: AppState) {
-
+    public appState: AppState,
+    viewContainerRef:ViewContainerRef) {
+    this.viewContainerRef = viewContainerRef;
   }
+
+
+
 
   ngOnInit() {
     console.log('Initial App State', this.appState.state);

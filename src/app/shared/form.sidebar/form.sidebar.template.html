@@ -1,0 +1,8 @@
+<div class="form-side-bar pull-left">
+    <ul class="nav-list">
+        <li class="nav-item"
+            *ngFor="let route of routes">
+            <a class="nav-link" [routerLink]="route.ref">{{route.label}}</a>
+        </li>
+    </ul>
+</div>

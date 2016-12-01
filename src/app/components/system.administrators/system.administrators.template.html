@@ -1,0 +1,31 @@
+<div class="administrators">
+    <h3>Office System Administrators</h3>
+    <p><button (click)="onCreateNewAdmin()" class="btn btn-primary">Add Office System Admin</button></p>
+    <customtable [columns]="columns"
+                 [rows]="rows"
+                 [data]="data"
+                 [totalItems]="totalItems"
+                 [config]="config"
+                 (onDelete)="onDeleteClick($event)"
+                 (onEdit)="onEditClick($event)"
+                 (onNameClick)="onNameClick($event)"></customtable>
+
+    <modalDelete #deleteModal
+        [formErrors] = "formErrors"
+        (onDeleteClick)="onDeleteClick()"
+        (onDelete) = "removeAdministrator($event)"></modalDelete>
+    <modalcomponent #addAdminModal
+                    cancelButtonLabel="Cancel"
+                    submitButtonLabel="Add Office System Admin"
+                    modalHeader = "Add Office System Administrator"
+                    [columns]="columnsModal"
+                    [rows]="rows"
+                    [data]="data"
+                    [totalItems]="totalItems"
+                    [config]="configModal"
+                    [formErrors] = "formErrors"
+                    (onSubmit) = "onAddAdminToOffice($event)"
+                    (onRowClick)="onRowClick($event)"
+                    (onOpen)="onOpen()"
+                    (onRowClicked) = "onRowClicked()"></modalcomponent>
+</div>
