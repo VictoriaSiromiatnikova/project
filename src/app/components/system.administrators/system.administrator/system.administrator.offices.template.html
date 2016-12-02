@@ -9,6 +9,6 @@
              [formErrors] = "formErrors"
              (onDelete) = "removeOfficeFromAdmin($event)"></modal-delete>
 <div class="button-area form-group">
-    <button type="submit" class="btn btn-default pull-left">Save Changes</button>
+    <button (click)="saveChanges()" type="submit" class="btn btn-default pull-left">Save Changes</button>
     <button (click)="onCancel()" class="btn btn-default pull-left cancel">Cancel</button>
 </div>

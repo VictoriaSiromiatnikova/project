@@ -1,0 +1,25 @@
+{
+  "offices": [
+  {
+    "id": 31,
+    "name": "Office 1 by Admin",
+    "state": "California",
+    "type": "meritage",
+    "jurisdictions": 5,
+    "creationDate": "3/25/2010"
+  },
+  {
+    "id": 32,
+    "name": "Office 2 1 by Admin",
+    "state": "Colorado",
+    "jurisdictions": 4,
+    "creationDate": "3/25/2010"
+  },
+  {
+    "id": 33,
+    "name": "Office 3 1 by Admin",
+    "state": "Nebraska",
+    "jurisdictions": 3,
+    "creationDate": "3/25/2010"
+  }
+]}

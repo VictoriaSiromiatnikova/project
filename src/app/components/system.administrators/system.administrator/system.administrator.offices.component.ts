@@ -13,8 +13,10 @@ export class SystemAdministratorOfficesComponent implements OnInit{
     @ViewChild('deleteModal') public deleteModal;
     public formErrors: Array<any> = [];
     public data: Office[] = [];
+    public dataCopy: Office[] = [];
     public rows:Array<any> = [];
     public totalItems:number = 0;
+    private officesIdToRemove: Array<any> = [];
     private admin: SystemAdministrator = new SystemAdministrator();
 
     constructor(private systemAdministratorsService: SystemAdministratorsService,
@@ -33,31 +35,54 @@ export class SystemAdministratorOfficesComponent implements OnInit{
                     console.log(error.message);
                 });
         }
-        this.loadAllOffices();
+        this.loadOfficesByAdmin(adminId);
     }
 
     /*
      * Load list of All Offices
      * */
-    private loadAllOffices() {
-        this.officeService.getAll().subscribe(offices => {
-            //cut Mock Data
-            offices = offices.slice(1, 5);
-            this.data = offices;
+    private loadOfficesByAdmin(adminId: number): void {
+        this.officeService.getByAdminId(adminId).subscribe(offices => {
+            this.rows = this.data = offices;
+            //this.rows = offices;
             this.totalItems = offices.length;
-            this.rows = offices;
+            Object.assign(this.dataCopy, this.data);
         });
     }
 
     /*
      * Event handler for delete modal window
-     * Process remove Office from Admin functionality
+     * Remove Office from Table
      * */
-    private removeOfficeFromAdmin(row: Office): void {
-        this.officeService.delete(row.id).subscribe(
+    private removeOfficeFromAdmin(office: Office): void {
+        let index: number = this.rows.indexOf(office, 0);
+        if (index > -1) {
+           // this.data.splice(index, 1);
+            this.rows.splice(index, 1);
+        }
+        this.officesIdToRemove.push(office.id);
+        this.deleteModal.close();
+    }
+
+    /*
+     * Event handler for Cancel Functionality
+     * Revert Changes of Offices list
+     * */
+    private cancelChanges(): void {
+        this.officesIdToRemove = [];
+        Object.assign(this.data, this.dataCopy);
+    }
+
+    /*
+    * Event handler for Save Changes Functionality
+    * Process remove Offices from Admin
+    * */
+    //private saveChanges(officesIds: Array<number>): void {
+    private saveChanges(): void {
+        this.systemAdministratorsService.deleteOfficesFromAdmin(this.officesIdToRemove).subscribe(
             response => {
-                console.log(response)
-                this.deleteModal.close();
+                console.log(response);
+                Object.assign(this.dataCopy, this.data);
             },
             error => {
                 this.formErrors = [error];

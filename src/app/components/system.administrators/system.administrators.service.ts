@@ -6,6 +6,18 @@ import {SystemAdministrator} from "./system.administrator";
 export class SystemAdministratorsService {
     constructor(private http: Http) { }
 
+    create(admin: SystemAdministrator) {
+        return this.http.post('/api/admin', admin ).map((response: Response) => response.json());
+    }
+
+    update(admin: SystemAdministrator) {
+        return this.http.put('/api/admin/' + admin.id, admin).map((response: Response) => response.json());
+    }
+
+    delete(id: number) {
+        return this.http.delete('/api/admin/' + id,).map((response: Response) => response.json());
+    }
+
     getAll() {
         return this.http.get('/app/assets/dataJSON_temp/system.administrators.json')
             .map((response: Response) => response.json()['systemAdministrators']);
@@ -25,17 +37,10 @@ export class SystemAdministratorsService {
         });
     }
 
-    create(admin: SystemAdministrator) {
-        return this.http.post('/api/admin', admin ).map((response: Response) => response.json());
+    deleteOfficesFromAdmin(officesIds: Array<number>) {
+        return this.http.post('/api/admin/deleteOffices', officesIds ).map((response: Response) => response.json());
     }
 
-    update(admin: SystemAdministrator) {
-        return this.http.put('/api/admin/' + admin.id, admin).map((response: Response) => response.json());
-    }
-
-    delete(id: number) {
-        return this.http.delete('/api/admin/' + id,).map((response: Response) => response.json());
-    }
     public configAdminsTable: any ={
         paging: false,
         actions: true,

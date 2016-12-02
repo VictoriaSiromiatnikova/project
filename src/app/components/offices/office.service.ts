@@ -6,11 +6,23 @@ import {Office} from "./office";
 export class OfficeService {
     constructor(private http: Http) { }
 
+    create(office: Office) {
+        return this.http.post('/api/offices', office ).map((response: Response) => response.json());
+    }
+
+    update(office: Office) {
+        return this.http.put('/api/offices/' + office.id, office).map((response: Response) => response.json());
+    }
+
+    delete(id: number) {
+        return this.http.delete('/api/offices/' + id).map((response: Response) => response.json());
+    }
+
     getAll() {
-        return this.http.get('/app/assets/dataJSON_temp/offices.json').map((response: Response) => response.json()['offices'])
+        return this.http.get('/app/assets/dataJSON_temp/offices.json').map((response: Response) => response.json()['offices']);
     }
     getById(id: number) {
-        return this.http.get('/api/offices/' + id).map((response: Response) => {
+        return this.http.get('/api/offices/admin' + id).map((response: Response) => {
             //response.json()
             // return Mock Data TODO: remove when api services will be avaliable
             return {
@@ -24,16 +36,8 @@ export class OfficeService {
         });
     }
 
-    create(office: Office) {
-        return this.http.post('/api/offices', office ).map((response: Response) => response.json());
-    }
-
-    update(office: Office) {
-        return this.http.put('/api/offices/' + office.id, office).map((response: Response) => response.json());
-    }
-
-    delete(id: number) {
-        return this.http.delete('/api/offices/' + id,).map((response: Response) => response.json());
+    getByAdminId(id: number) {
+        return this.http.get('/app/assets/dataJSON_temp/officesByAdmin.json').map((response: Response) => response.json()['offices']);
     }
 
     private officeTypes: Array<any> = [
