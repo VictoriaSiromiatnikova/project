@@ -1,31 +1,29 @@
 <div class="administrators">
     <h3>Office System Administrators</h3>
     <p><button (click)="onCreateNewAdmin()" class="btn btn-primary">Add Office System Admin</button></p>
-    <customtable [columns]="columns"
-                 [rows]="rows"
+    <custom-table [rows]="rows"
                  [data]="data"
                  [totalItems]="totalItems"
-                 [config]="config"
-                 (onDelete)="onDeleteClick($event)"
-                 (onEdit)="onEditClick($event)"
-                 (onNameClick)="onNameClick($event)"></customtable>
+                 [config]="systemAdministratorsService.configAdminsTable"
+                 [columns]="systemAdministratorsService.columnsAdminsTable"
+                 (onDelete)="deleteModal.open($event)"
+                 (onEdit)="onEditClick($event)"></custom-table>
 
-    <modalDelete #deleteModal
+    <modal-delete #deleteModal
         [formErrors] = "formErrors"
-        (onDeleteClick)="onDeleteClick()"
-        (onDelete) = "removeAdministrator($event)"></modalDelete>
-    <modalcomponent #addAdminModal
+        (onDelete) = "removeAdministrator($event)"></modal-delete>
+    <modal-component #addAdminModal
                     cancelButtonLabel="Cancel"
                     submitButtonLabel="Add Office System Admin"
                     modalHeader = "Add Office System Administrator"
-                    [columns]="columnsModal"
+                    [columns]="systemAdministratorsService.columnsAdminsTableModal"
+                    [config]="systemAdministratorsService.configAdminsTableModal"
                     [rows]="rows"
                     [data]="data"
                     [totalItems]="totalItems"
-                    [config]="configModal"
                     [formErrors] = "formErrors"
                     (onSubmit) = "onAddAdminToOffice($event)"
                     (onRowClick)="onRowClick($event)"
                     (onOpen)="onOpen()"
-                    (onRowClicked) = "onRowClicked()"></modalcomponent>
+                    (onRowClicked) = "onRowClicked()"></modal-component>
 </div>

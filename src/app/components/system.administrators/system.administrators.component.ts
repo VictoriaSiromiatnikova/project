@@ -5,7 +5,7 @@ import {EditLinkComponent} from './offices/edit-link.component';
 import {Router} from "@angular/router";
 
 @Component({
-    selector: 'systemAdministrators',
+    selector: 'system-administrators',
     templateUrl: 'system.administrators.template.html'
 })
 export class SystemAdministratorsComponent implements OnInit{
@@ -14,41 +14,21 @@ export class SystemAdministratorsComponent implements OnInit{
     @Output() onAddAdminToOffice = new EventEmitter();
     public data: SystemAdministrator[] = [];
     public formErrors: Array<any> = [];
-    public config: any ={
-        paging: false,
-        actions: true,
-        editAction: true,
-        sorting: {columns: this.columns},
-        filtering: {filterString: ''},
-        className: ['table-striped', 'table-bordered']
-    }
-    public columns:Array<any> = [
-        {title: 'Name', name: 'name', sort: 'asc'},
-        {title: 'Email', name: 'email', sort: 'asc'},
-        {title: 'Phone', sort: 'asc', name: 'phone', }
-    ];
     public rows:Array<any> = [];
     public totalItems:number = 0;
-    ///Modal Admin
-    public configModal: any ={
-        paging: false,
-        actions: false,
-        sorting: false,
-        filtering: {filterString: ''},
-        className: ['table-striped', 'table-bordered']
-    }
-    public columnsModal:Array<any> = [
-        {title: 'Email', name: 'email', sort: false, filtering: {filterString: '', placeholder: 'Filter by Name'}},
-        {title: 'Name', name: 'name', sort: false}
-    ];
     public selectedAdmin : any;
 
     constructor(private systemAdministratorsService: SystemAdministratorsService,
                 private router: Router){}
+
     ngOnInit() {
         this.loadAllAdministrators();
     }
-    private loadAllAdministrators() {
+
+    /*
+     * Load list of All Administrators
+     * */
+    private loadAllAdministrators(): void {
         this.systemAdministratorsService.getAll().subscribe(administrators => {
             administrators = administrators.map((admin: SystemAdministrator) => {
                 admin['name'] = admin.firstName + ' ' + admin.lastName;
@@ -59,27 +39,29 @@ export class SystemAdministratorsComponent implements OnInit{
             this.totalItems = administrators.length;
         });
     }
-    /*
-    * methods for delete modal window
-    * */
-    public onDeleteClick(row: SystemAdministrator){
-        this.deleteModal.open(row);
-    }
 
-    public removeAdministrator(row) {
+    /*
+     * Event handler for delete modal window
+     * Process Administrator remove functionality
+     * */
+    private removeAdministrator(row: SystemAdministrator): void {
         this.systemAdministratorsService.delete(row.id).subscribe(
             response => {
-                console.log(response)
                 this.deleteModal.close();
             },
             error => {
-                this.formErrors = [];
-                this.formErrors.push(error);
+                this.formErrors = [error];
             });
     }
+
     /*
-     * --- methods for delete modal window
+     * Event handler for edit Administrator action
+     * Redirect to Administrator Details screen
      * */
+    private onEditClick(row: SystemAdministrator): void{
+        this.router.navigate(['/administrator', row.id, 'general']);
+    }
+
     /*
     * methods for add admin model
     * */
@@ -90,22 +72,18 @@ export class SystemAdministratorsComponent implements OnInit{
      * methods for add admin modal window
      * */
 
-    public onCreateNewAdmin(){
+    private onCreateNewAdmin(){
         this.addAdminModal.open();
     }
-    public onNameClick(row: SystemAdministrator){
+    private onNameClick(row: SystemAdministrator){
         console.log('name click');
         console.log(row);
         this.router.navigate(['/administrator', row.id, 'general']);
     }
-    public onEditClick(row: SystemAdministrator){
-        alert('delete');
-        console.log(row);
-    }
-    public onRowClicked(admin: SystemAdministrator){
+    private onRowClicked(admin: SystemAdministrator){
         this.selectedAdmin = admin;
     }
-    public addAdminToOffice(admin){
+    private addAdminToOffice(admin){
         this.data.push(this.selectedAdmin);
         this.rows.push(this.selectedAdmin);
     }

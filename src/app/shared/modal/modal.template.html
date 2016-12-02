@@ -8,12 +8,12 @@
 
     <modal-header><h3>{{modalHeader}}</h3></modal-header>
     <modal-content>
-        <customtable [columns]="columns"
+        <custom-table [columns]="columns"
                      [rows]="rows"
                      [data]="data"
                      [totalItems]="totalItems"
                      [config]="config"
-                    ></customtable>
+                    ></custom-table>
 
         <div *ngIf="formErrors.length" class="alert alert-danger">
             <div *ngFor='let error of formErrors'>
@@ -21,5 +21,4 @@
             </div>
         </div>
     </modal-content>
-
 </modal>

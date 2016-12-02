@@ -24,8 +24,10 @@ import { SidebarComponent } from "./shared/sidebar/sidebar.component";
 import { LoginComponent } from "./components/login/login.component";
 import { OfficesComponent} from "./components/offices/offices.component";
 import { OfficeComponent } from './components/offices/office.component';
+import { UsStatesComponent } from './shared/us.states/us.states.component';
 import { JurisdictionsComponent} from "./components/jurisdictions/jurisdictions.component";
-import { CustomTableComponent } from "./shared/table/table.component";
+import { CustomTableComponent } from "./shared/table/custom.table.component";
+import { DeleteLinkTableComponent } from "./shared/table/delete.link.component";
 import { ModalDeleteComponent } from "./shared/modal/modal.delete.component";
 import { ModalComponent } from "./shared/modal/modal.component";
 import { SystemAdministratorsComponent } from "./components/system.administrators/system.administrators.component";
@@ -37,7 +39,7 @@ import { SystemAdministratorGeneralComponent } from "./components/system.adminis
 import { OfficeService } from "./components/offices/office.service";
 import { AuthenticationService } from "./shared/services/authentication.service";
 import { JurisdictionService } from "./components/jurisdictions/jurisdiction.service";
-import { StatesService } from "./shared/services/states.service";
+import { StatesService } from "./shared/us.states/states.service";
 import { SystemAdministratorsService } from "./components/system.administrators/system.administrators.service";
 
 
@@ -66,8 +68,10 @@ type StoreType = {
     SidebarComponent,
     LoginComponent,
     CustomTableComponent,
+    DeleteLinkTableComponent,
     ModalDeleteComponent,
     ModalComponent,
+    UsStatesComponent,
     OfficeComponent,
     OfficesComponent,
     SystemAdministratorsComponent,

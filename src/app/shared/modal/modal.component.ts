@@ -1,7 +1,7 @@
 import {Component, ViewChild, Input, Output, EventEmitter} from "@angular/core";
 
 @Component({
-    selector: 'modalcomponent',
+    selector: 'modal-component',
     templateUrl: 'modal.template.html'
 })
 export class ModalComponent{

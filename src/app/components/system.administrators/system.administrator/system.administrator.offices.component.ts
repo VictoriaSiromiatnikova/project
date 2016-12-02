@@ -1,9 +1,9 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
-import {SystemAdministratorsService} from  "../system.administrators.service";
-import {SystemAdministrator} from "../system.administrator";
-import {Router, ActivatedRoute} from "@angular/router";
-import {OfficeService} from "../../offices/office.service";
-import {Office} from "../../offices/office";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { SystemAdministratorsService } from  "../system.administrators.service";
+import { SystemAdministrator } from "../system.administrator";
+import { Router, ActivatedRoute } from "@angular/router";
+import { OfficeService } from "../../offices/office.service";
+import { Office } from "../../offices/office";
 
 @Component({
     selector: 'systemAdministratorOffices',
@@ -13,17 +13,6 @@ export class SystemAdministratorOfficesComponent implements OnInit{
     @ViewChild('deleteModal') public deleteModal;
     public formErrors: Array<any> = [];
     public data: Office[] = [];
-    public config: any ={
-        paging: false,
-        actions: true,
-        sorting: {columns: this.columns},
-        filtering: {filterString: ''},
-        className: ['table-striped', 'table-bordered']
-    }
-    public columns:Array<any> = [
-        {title: 'Name', name: 'name', sort: 'asc', filtering: {filterString: '', placeholder: 'Filter by Name'}},
-        {title: 'State', name: 'state', sort: 'asc', filtering: {filterString: '', placeholder: 'Filter by State'}}
-    ];
     public rows:Array<any> = [];
     public totalItems:number = 0;
     private admin: SystemAdministrator = new SystemAdministrator();
@@ -41,19 +30,15 @@ export class SystemAdministratorOfficesComponent implements OnInit{
                     this.admin = admin;
                 },
                 error => {
-                    /*Mock data*/
-                    this.admin ={
-                        "id": 1,
-                        "firstName": "Bob",
-                        "lastName": "Smith",
-                        "phone": "303-784-9834",
-                        "email": "email@email.com",
-                        "state": "CA"
-                    }
+                    console.log(error.message);
                 });
         }
         this.loadAllOffices();
     }
+
+    /*
+     * Load list of All Offices
+     * */
     private loadAllOffices() {
         this.officeService.getAll().subscribe(offices => {
             //cut Mock Data
@@ -63,26 +48,19 @@ export class SystemAdministratorOfficesComponent implements OnInit{
             this.rows = offices;
         });
     }
-    /*
-     * methods for delete modal window
-     * */
-    public onDeleteClick(row: Office){
-        this.deleteModal.open(row);
-    }
 
-    public removeOfficeFromAdmin(row) {
+    /*
+     * Event handler for delete modal window
+     * Process remove Office from Admin functionality
+     * */
+    private removeOfficeFromAdmin(row: Office): void {
         this.officeService.delete(row.id).subscribe(
             response => {
                 console.log(response)
                 this.deleteModal.close();
             },
             error => {
-                this.formErrors = [];
-                this.formErrors.push(error);
+                this.formErrors = [error];
             });
     }
-    /*
-     * --- methods for delete modal window
-     * */
-
 }

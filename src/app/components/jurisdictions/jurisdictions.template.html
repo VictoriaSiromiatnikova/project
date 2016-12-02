@@ -1,16 +1,14 @@
 <div class="center-block main-area offices-area">
     <h2>All Jurisdictions <em>Jurisdictions {{totalItems}}</em></h2>
     <p><button class="btn btn-primary">Create New Jurisdiction</button></p>
-    <customtable [columns]="columns"
+    <custom-table [columns]="jurisdictionService.tableColumns"
+                 [config]="jurisdictionService.tableConfig"
                  [rows]="rows"
                  [data]="data"
-                 [config]="config"
                  [totalItems]="totalItems"
-                 (onDelete)="onDeleteClick($event)"
-                 (onEdit)="onEditClick($event)"
-                 (onNameClick)="onNameClick($event)"></customtable>
-    <modalDelete #deleteModal
+                 (onDelete)="deleteModal.open($event)"
+                 (onEdit)="onEditClick($event)"></custom-table>
+    <modal-delete #deleteModal
                  [formErrors] = "formErrors"
-                 (onDeleteClick)="onDeleteClick()"
-                 (onDelete) = "removeJurisdiction($event)"></modalDelete>
+                 (onDelete) = "removeJurisdiction($event)"></modal-delete>
 </div>

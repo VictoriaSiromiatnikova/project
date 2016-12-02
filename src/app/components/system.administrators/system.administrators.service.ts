@@ -11,7 +11,18 @@ export class SystemAdministratorsService {
             .map((response: Response) => response.json()['systemAdministrators']);
     }
     getById(id: number) {
-        return this.http.get('/api/admin/' + id).map((response: Response) => response.json());
+        return this.http.get('/api/admin/' + id).map((response: Response) => {
+            //response.json()
+            // return Mock Data TODO: remove when api services will be avaliable
+            return {
+                "id": 1,
+                "firstName": "Bob",
+                "lastName": "Smith",
+                "phone": "303-784-9834",
+                "email": "email@email.com",
+                "state": "CA"
+            };
+        });
     }
 
     create(admin: SystemAdministrator) {
@@ -25,5 +36,32 @@ export class SystemAdministratorsService {
     delete(id: number) {
         return this.http.delete('/api/admin/' + id,).map((response: Response) => response.json());
     }
+    public configAdminsTable: any ={
+        paging: false,
+        actions: true,
+        sorting: {columns: this.columnsAdminsTable},
+        filtering: {filterString: ''},
+        className: ['table-striped', 'table-bordered']
+    }
+    public columnsAdminsTable:Array<any> = [
+        {title: 'Name', name: 'name', sort: 'asc'},
+        {title: 'Email', name: 'email', sort: 'asc'},
+        {title: 'Phone', sort: 'asc', name: 'phone', }
+    ];
+    public configAdminsTableModal: any ={
+        paging: false,
+        actions: false,
+        sorting: false,
+        filtering: {filterString: ''},
+        className: ['table-striped', 'table-bordered']
+    }
+    public columnsAdminsTableModal:Array<any> = [
+        {title: 'Email', name: 'email', sort: false, filtering: {filterString: '', placeholder: 'Filter by Name'}},
+        {title: 'Name', name: 'name', sort: false}
+    ];
+    public columnsAdminsOfficesTableModal:Array<any> = [
+        {title: 'Email', name: 'email', sort: false, filtering: {filterString: '', placeholder: 'Filter by Name'}},
+        {title: 'Name', name: 'name', sort: false}
+    ];
 
 }

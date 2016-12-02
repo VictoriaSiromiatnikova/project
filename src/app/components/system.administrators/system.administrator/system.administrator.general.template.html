@@ -26,9 +26,7 @@
     </div>
     <div class="form-group inline margin">
         <label for="state" class="center-block">US State</label>
-        <select class="form-control" id="state" name="state" [(ngModel)]="admin.state" required>
-            <option *ngFor="let state of states" [value]="state.abbreviation">{{state.abbreviation}}</option>
-        </select>
+        <states-select id="state" [(state)]="admin.state"></states-select>
     </div>
     <div class="form-group inline margin">
         <label for="zip" class="center-block">Zip</label>

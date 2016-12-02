@@ -24,4 +24,19 @@ export class JurisdictionService {
     delete(id: number) {
         return this.http.delete('/api/jurisdiction/' + id,).map((response: Response) => response.json());
     }
+    private tableConfig: any ={
+        paging: true,
+        actions: true,
+        sorting: {columns: this.tableColumns},
+        filtering: {filterString: ''},
+        className: ['table-striped', 'table-bordered']
+    }
+    private tableColumns:Array<any> = [
+        {title: 'Name', name: 'name', sort: 'asc', filtering: {filterString: '', placeholder: 'Filter by Name'}},
+        {title: 'Jurisdictions Abbreviation', sort: 'asc', name: 'jurisdictionAbbreviation', },
+        {title: 'Office', sort: 'asc', name: 'office', },
+        {title: 'State', name: 'state', sort: 'asc', filtering: {filterString: '', placeholder: 'Filter by State'}},
+        {title: 'Phone', sort: 'asc', name: 'phone' },
+        {title: 'Creation Date', sort: 'asc', name: 'creationDate', filtering: {filterString: '', placeholder: 'Filter by Date'}}
+    ];
 }

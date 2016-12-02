@@ -1,69 +1,64 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
-import {OfficeService} from "./office.service";
-import {Office} from "./office";
-import {EditLinkComponent } from './offices/edit-link.component';
-import {Router} from "@angular/router";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { OfficeService } from "./office.service";
+import { Office } from "./office";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'offices',
-  templateUrl: 'offices.template.html'
+    selector: 'offices',
+    templateUrl: 'offices.template.html'
 })
 export class OfficesComponent implements OnInit{
-  @ViewChild('deleteModal') public deleteModal;
-  public formErrors: Array<any> = [];
-  public data: Office[] = [];
-  public config: any ={
-    paging: true,
-    actions: true,
-    sorting: {columns: this.columns},
-    filtering: {filterString: ''},
-    className: ['table-striped', 'table-bordered']
-  }
-  public columns:Array<any> = [
-    {title: 'Name', name: 'name', sort: 'asc', filtering: {filterString: '', placeholder: 'Filter by Name'}},
-    {title: 'State', name: 'state', sort: 'asc', filtering: {filterString: '', placeholder: 'Filter by State'}},
-    {title: 'Jurisdictions', sort: 'asc', name: 'jurisdictions', },
-    {title: 'Creation Date', sort: 'asc', name: 'creationDate', filtering: {filterString: '', placeholder: 'Filter by Date'}}
-  ];
-  public rows:Array<any> = [];
-  public totalItems:number = 0;
-  constructor(private officeService: OfficeService,
-              private router: Router){}
-  ngOnInit() {
-    this.loadAllOffices();
-  }
-  private loadAllOffices() {
-    this.officeService.getAll().subscribe(offices => {
-      this.data = offices;
-      this.totalItems = offices.length;
-      this.rows = offices;
-    });
-  }
-  public onEditClick(row){
-    this.router.navigate(['/office', row.id]);
-  }
-  public onCreateNewOffice(){
-    this.router.navigate(['/office/', '']);
-  }
-  /*
-   * methods for delete modal window
-   * */
-  public onDeleteClick(row: Office){
-    this.deleteModal.open(row);
-  }
+    @ViewChild('deleteModal') public deleteModal;
+    public formErrors: Array<any> = [];
+    public data: Office[] = [];
+    public rows:Array<any> = [];
+    public totalItems:number = 0;
 
-  public removeOffice(row) {
-    this.officeService.delete(row.id).subscribe(
-        response => {
-          console.log(response)
-          this.deleteModal.close();
-        },
-        error => {
-          this.formErrors = [];
-          this.formErrors.push(error);
+    constructor(private officeService: OfficeService,
+              private router: Router){}
+
+    ngOnInit() {
+        this.loadAllOffices();
+    }
+
+    /*
+    * Load list of All Offices
+    * */
+    private loadAllOffices() {
+        this.officeService.getAll().subscribe(offices => {
+          this.data = offices;
+          this.rows = offices;
+          this.totalItems = offices.length;
         });
-  }
-  /*
-   * --- methods for delete modal window
-   * */
+    }
+
+    /*
+     * Event handler for edit office action
+     * Redirect to Office Details screen
+     * */
+    private onEditClick(row: Office): void{
+        this.router.navigate(['/office', row.id]);
+    }
+
+    /*
+     * Event handler for 'Create New Office' button
+     *  Redirect to Office Details screen
+     * */
+    private onCreateNewOffice(): void{
+        this.router.navigate(['/office/', '']);
+    }
+
+    /*
+    * Event handler for delete modal window
+    * Process office remove functionality
+    * */
+    private removeOffice(row: Office): void {
+        this.officeService.delete(row.id).subscribe(
+            response => {
+              this.deleteModal.close();
+            },
+            error => {
+              this.formErrors = [error];
+            });
+    }
 }

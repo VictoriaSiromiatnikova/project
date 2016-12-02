@@ -7,16 +7,14 @@
     <div class="form-group">
         <label for="officeTypes" class="center-block">Office Type</label>
         <select class="form-control" name="type" [(ngModel)]="office.type" id="officeTypes" required>
-            <option *ngFor="let type of officeTypes" [value]="type.value">{{type.label}}</option>
+            <option *ngFor="let type of officeService.officeTypes" [value]="type.value">{{type.label}}</option>
         </select>
     </div>
     <div class="form-group">
         <label for="state" class="center-block">US State</label>
-        <select class="form-control" id="state" name="state" [(ngModel)]="office.state" required>
-            <option *ngFor="let state of states" [value]="state.abbreviation">{{state.abbreviation}}</option>
-        </select>
+        <states-select id="state" [(state)]="office.state"></states-select>
     </div>
-    <systemAdministrators (onAddAdminToOffice)="addAdminToOffice($event)"></systemAdministrators>
+    <system-administrators (onAddAdminToOffice)="addAdminToOffice($event)"></system-administrators>
     <div class="button-area">
         <button type="submit" class="btn btn-default pull-left">Save Changes</button>
         <button (click)="onCancel()" class="btn btn-default pull-left cancel">Cancel</button>

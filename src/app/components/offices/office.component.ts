@@ -1,8 +1,7 @@
-import {Component, OnInit, Input, ViewChild} from "@angular/core";
-import {OfficeService} from "./office.service";
-import {StatesService} from "../../shared/services/states.service";
-import {Office} from "./office";
-import {Router, ActivatedRoute, Params} from "@angular/router";
+import { Component, OnInit } from "@angular/core";
+import { OfficeService} from "./office.service";
+import { Office } from "./office";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: 'office',
@@ -11,12 +10,8 @@ import {Router, ActivatedRoute, Params} from "@angular/router";
 export class OfficeComponent implements OnInit{
     private office: Office = new Office();
     private states: Array<any> = [];
-    private officeTypes: Array<any> = [
-        {value: 'safeBuilt', label: 'SAFEbuilt'},
-        {value: 'meritage', label: 'Meritage'}
-    ];
-    constructor(private statesService: StatesService,
-                private officeService: OfficeService,
+
+    constructor(private officeService: OfficeService,
                 private route: ActivatedRoute,
                 private router: Router){
 
@@ -30,29 +25,30 @@ export class OfficeComponent implements OnInit{
                     this.office = office;
                 },
                 error => {
-                    /*Mock data*/
-                    this.office = {
-                        "id": 1,
-                        "name": "Office 1",
-                        "state": "AZ",
-                        "type": "meritage",
-                        "jurisdictions": 5,
-                        "creationDate": "3/25/2010"
-                    }
+                    console.log(error.message);
                 });
         }
-        this.loadAllStates();
     }
-    private onSubmit() {
+
+    /*
+     * Event handler to save Office changes
+     * */
+    private onSubmit(): void {
 
     }
-    private loadAllStates(){
-        this.statesService.getAll().subscribe(states => this.states = states);
-    }
-    private onCancel(){
+
+    /*
+     * Event handler to cancel Office changes
+     * */
+    private onCancel(): void{
         this.router.navigate(['/offices']);
     }
-    private addAdminToOffice(){
+
+    /*
+    * Event handler for Admin Office Modal window submit
+    * Add admin to office
+    * */
+    private addAdminToOffice(): void{
         console.log('add admin to office');
     }
 

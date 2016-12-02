@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from "@angular/core";
 import {JurisdictionService} from "./jurisdiction.service";
 import {Jurisdiction} from "./jurisdiction";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'jurisdictions',
@@ -11,55 +12,45 @@ export class JurisdictionsComponent implements OnInit {
     public formErrors: Array<any> = [];
     public data: Jurisdiction[] = [];
     public rows:Array<any> = [];
-    public config: any ={
-        paging: true,
-        actions: true,
-        sorting: {columns: this.columns},
-        filtering: {filterString: ''},
-        className: ['table-striped', 'table-bordered']
-    }
-    public columns:Array<any> = [
-        {title: 'Name', name: 'name', sort: 'asc', filtering: {filterString: '', placeholder: 'Filter by Name'}},
-        {title: 'Jurisdictions Abbreviation', sort: 'asc', name: 'jurisdictionAbbreviation', },
-        {title: 'Office', sort: 'asc', name: 'office', },
-        {title: 'State', name: 'state', sort: 'asc', filtering: {filterString: '', placeholder: 'Filter by State'}},
-        {title: 'Phone', sort: 'asc', name: 'phone' },
-        {title: 'Creation Date', sort: 'asc', name: 'creationDate', filtering: {filterString: '', placeholder: 'Filter by Date'}}
-    ];
     public totalItems:number = 0;
-    constructor(private jurisdictionService: JurisdictionService){}
+
+    constructor(private jurisdictionService: JurisdictionService,
+                private router: Router){}
+
     ngOnInit() {
         this.loadAllJurisdictions();
     }
-    private loadAllJurisdictions() {
+
+    /*
+    * Load list of all Jurisdictions
+    * */
+    private loadAllJurisdictions(): void {
         this.jurisdictionService.getAll().subscribe(jurisdictions => {
             this.data = jurisdictions;
             this.totalItems = jurisdictions.length;
             this.rows = jurisdictions;
         });
     }
-    private onNameClick(){
 
-    }
     /*
-     * methods for delete modal window
+     * Event handler for edit Jurisdiction action
+     * Redirect to Jurisdiction Details screen
      * */
-    public onDeleteClick(row: Jurisdiction){
-        this.deleteModal.open(row);
+    private onEditClick(row: Jurisdiction): void{
+        this.router.navigate(['/jurisdiction', row.id]);
     }
 
-    public removeJurisdiction(row) {
+    /*
+     * Event handler for delete modal window
+     * Process Jurisdiction remove functionality
+     * */
+    private removeJurisdiction(row: Jurisdiction): void {
         this.jurisdictionService.delete(row.id).subscribe(
             response => {
-                console.log(response)
                 this.deleteModal.close();
             },
             error => {
-                this.formErrors = [];
-                this.formErrors.push(error);
+                this.formErrors = [error];
             });
     }
-    /*
-     * --- methods for delete modal window
-     * */
 }

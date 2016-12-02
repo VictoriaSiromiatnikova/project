@@ -1,8 +1,8 @@
 import {Component, Input, Output, OnChanges, EventEmitter, SimpleChange} from '@angular/core';
 
 @Component({
-    selector: 'customtable',
-    templateUrl: 'table.template.html'
+    selector: 'custom-table',
+    templateUrl: 'custom.table.template.html'
 })
 export class CustomTableComponent implements OnChanges{
     @Input() rows: Array<any>;
@@ -14,12 +14,15 @@ export class CustomTableComponent implements OnChanges{
     @Output() onEdit = new EventEmitter();
     @Output() onNameClick = new EventEmitter();
     @Output() onRowClicked = new EventEmitter();
+
     constructor() { }
+
     public page:number = 1;
     public itemsPerPage:number = 10;
     public startItemOnPageIndex:number = 1;
     public endItemOnPageIndex: number = 1;
     public itemsPerPageList: Array<any> = [5, 10, 50];
+
     ngOnChanges (changes: {[propKey: string]: SimpleChange}) {
         if(changes['data']){
             this.onChangeTable();
@@ -40,11 +43,11 @@ export class CustomTableComponent implements OnChanges{
     private extendRowsWithActions(){
         if(this.config.actions){
             for(let row of this.rows){
-                row['delete'] = `<div (click)="deleteClick($event)" name: "delete" class="delete">Delete</div>`;
+                row['delete'] = `<div name: "delete" class="delete">Delete</div>`;
                 row['edit'] = `<div class="edit" name="edit">Edit</div>`;
             }
             for(let row of this.data){
-                row['delete'] = `<div (click)="deleteClick($event)" name: "delete" class="delete">Delete</div>`;
+                row['delete'] = `<div name: "delete" class="delete">Delete</div>`;
                 row['edit'] = `<div class="edit" name="edit">Edit</div>`;
             }
             this.extendColumsWithActions();
