@@ -1,11 +1,15 @@
-import {Component, Input, Output, OnChanges, EventEmitter, SimpleChange} from '@angular/core';
+import {
+    Component, Input, Output, OnChanges, EventEmitter, DoCheck, SimpleChange, KeyValueDiffer,
+    IterableDiffer, KeyValueDiffers, IterableDiffers
+} from '@angular/core';
 
 @Component({
     selector: 'custom-table',
     templateUrl: 'custom.table.template.html'
 })
-export class CustomTableComponent implements OnChanges{
-    @Input() rows: Array<any>;
+export class CustomTableComponent implements DoCheck{
+    private differ;
+
     @Input() columns: Array<any>;
     @Input() data: any[];
     @Input() totalItems: number;
@@ -15,19 +19,22 @@ export class CustomTableComponent implements OnChanges{
     @Output() onNameClick = new EventEmitter();
     @Output() onRowClicked = new EventEmitter();
 
-    constructor() { }
+    constructor(private differs: KeyValueDiffers) {
+        this.differ = differs.find({}).create(null);
+    }
 
     public page:number = 1;
+    public rows: Array<any> = [];
     public itemsPerPage:number = 10;
     public startItemOnPageIndex:number = 1;
     public endItemOnPageIndex: number = 1;
     public itemsPerPageList: Array<any> = [5, 10, 50];
 
-    ngOnChanges (changes: {[propKey: string]: SimpleChange}) {
-        if(changes['data']){
-            this.onChangeTable();
-        }
-        if(changes['rows'] && changes['rows'].currentValue.length){
+    ngDoCheck (){
+        let changes = this.differ.diff(this.data);
+
+        if (changes) {
+           Object.assign(this.rows, this.data);
             this.extendRowsWithActions();
         }
     }
@@ -38,7 +45,8 @@ export class CustomTableComponent implements OnChanges{
         this.columns = this.columns.concat([
             { title: '', name: 'delete', sort: false, class:'actions', filtering: false},
             { title: '', name: 'edit', sort: false, class:'actions', filtering: false }
-        ])
+        ]);
+        this.onChangeTable();
     }
     private extendRowsWithActions(){
         if(this.config.actions){

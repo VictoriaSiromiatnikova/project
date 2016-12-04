@@ -1,8 +1,7 @@
 <div class="administrators">
     <h3>Office System Administrators</h3>
     <p><button (click)="onCreateNewAdmin()" class="btn btn-primary">Add Office System Admin</button></p>
-    <custom-table [rows]="rows"
-                 [data]="data"
+    <custom-table [data]="data"
                  [totalItems]="totalItems"
                  [config]="systemAdministratorsService.configAdminsTable"
                  [columns]="systemAdministratorsService.columnsAdminsTable"

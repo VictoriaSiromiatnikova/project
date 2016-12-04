@@ -1,0 +1,8 @@
+<custom-table [columns]="officeService.columnsOfficesForAdmin"
+              [config]="officeService.configOfficesForAdmin"
+              [data]="data"
+              [totalItems]="totalItems"
+              (onDelete)="deleteModal.open($event)"></custom-table>
+<modal-delete #deleteModal
+              [formErrors] = "formErrors"
+              (onDelete) = "removeOfficeFromAdmin($event)"></modal-delete>

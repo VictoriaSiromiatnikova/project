@@ -12,8 +12,7 @@ export class SystemAdministratorComponent implements OnInit{
     private admin: SystemAdministrator = new SystemAdministrator();
 
     constructor(private systemAdministratorsService: SystemAdministratorsService,
-                private route: ActivatedRoute,
-                private router: Router){}
+                private route: ActivatedRoute){}
     ngOnInit() {
         let adminId = this.route.snapshot.params['id'];
 

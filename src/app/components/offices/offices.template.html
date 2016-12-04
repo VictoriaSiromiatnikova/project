@@ -1,8 +1,7 @@
 <div class="center-block main-area offices-area">
     <h2>All Offices <em>Offices {{totalItems}}</em></h2>
     <p><button (click)="onCreateNewOffice()" class="btn btn-primary">Create New Office</button></p>
-    <custom-table [rows]="rows"
-                 [data]="data"
+    <custom-table [data]="data"
                  [totalItems]="totalItems"
                  [columns]="officeService.tableColumns"
                  [config]="officeService.tableConfig"

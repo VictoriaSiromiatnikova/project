@@ -11,7 +11,6 @@ export class JurisdictionsComponent implements OnInit {
     @ViewChild('deleteModal') public deleteModal;
     public formErrors: Array<any> = [];
     public data: Jurisdiction[] = [];
-    public rows:Array<any> = [];
     public totalItems:number = 0;
 
     constructor(private jurisdictionService: JurisdictionService,
@@ -28,7 +27,6 @@ export class JurisdictionsComponent implements OnInit {
         this.jurisdictionService.getAll().subscribe(jurisdictions => {
             this.data = jurisdictions;
             this.totalItems = jurisdictions.length;
-            this.rows = jurisdictions;
         });
     }
 

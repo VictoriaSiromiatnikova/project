@@ -3,7 +3,6 @@
     <p><button class="btn btn-primary">Create New Jurisdiction</button></p>
     <custom-table [columns]="jurisdictionService.tableColumns"
                  [config]="jurisdictionService.tableConfig"
-                 [rows]="rows"
                  [data]="data"
                  [totalItems]="totalItems"
                  (onDelete)="deleteModal.open($event)"

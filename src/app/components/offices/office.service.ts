@@ -64,4 +64,12 @@ export class OfficeService {
         {title: 'Name', name: 'name', sort: 'asc', filtering: {filterString: '', placeholder: 'Filter by Name'}},
         {title: 'State', name: 'state', sort: 'asc', filtering: {filterString: '', placeholder: 'Filter by State'}}
     ];
+
+    public configOfficesForAdmin: any ={
+        paging: false,
+        actions: true,
+        sorting: {columns: this.columnsOfficesForAdmin},
+        filtering: {filterString: ''},
+        className: ['table-striped', 'table-bordered']
+    }
 }

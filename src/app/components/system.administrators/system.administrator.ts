@@ -5,4 +5,7 @@ export class SystemAdministrator {
     email: string;
     state: string;
     phone: string;
+    address: string;
+    zip: string;
+    city: string;
 }

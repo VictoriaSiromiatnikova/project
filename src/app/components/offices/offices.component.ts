@@ -11,7 +11,6 @@ export class OfficesComponent implements OnInit{
     @ViewChild('deleteModal') public deleteModal;
     public formErrors: Array<any> = [];
     public data: Office[] = [];
-    public rows:Array<any> = [];
     public totalItems:number = 0;
 
     constructor(private officeService: OfficeService,
@@ -27,7 +26,6 @@ export class OfficesComponent implements OnInit{
     private loadAllOffices() {
         this.officeService.getAll().subscribe(offices => {
           this.data = offices;
-          this.rows = offices;
           this.totalItems = offices.length;
         });
     }

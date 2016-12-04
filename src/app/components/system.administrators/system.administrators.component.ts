@@ -14,7 +14,6 @@ export class SystemAdministratorsComponent implements OnInit{
     @Output() onAddAdminToOffice = new EventEmitter();
     public data: SystemAdministrator[] = [];
     public formErrors: Array<any> = [];
-    public rows:Array<any> = [];
     public totalItems:number = 0;
     public selectedAdmin : any;
 
@@ -35,7 +34,6 @@ export class SystemAdministratorsComponent implements OnInit{
                 return admin;
             });
             this.data = administrators;
-            this.rows = administrators;
             this.totalItems = administrators.length;
         });
     }
@@ -76,8 +74,6 @@ export class SystemAdministratorsComponent implements OnInit{
         this.addAdminModal.open();
     }
     private onNameClick(row: SystemAdministrator){
-        console.log('name click');
-        console.log(row);
         this.router.navigate(['/administrator', row.id, 'general']);
     }
     private onRowClicked(admin: SystemAdministrator){
@@ -85,6 +81,5 @@ export class SystemAdministratorsComponent implements OnInit{
     }
     private addAdminToOffice(admin){
         this.data.push(this.selectedAdmin);
-        this.rows.push(this.selectedAdmin);
     }
 }

@@ -1,14 +1,9 @@
 <h2>Office System Administrator Assigned Offices</h2>
-<custom-table [columns]="officeService.columnsOfficesForAdmin"
-             [rows]="rows"
-             [data]="data"
-             [config]="systemAdministratorsService.configAdminsTable"
-             [totalItems]="totalItems"
-             (onDelete)="deleteModal.open($event)"></custom-table>
-<modal-delete #deleteModal
-             [formErrors] = "formErrors"
-             (onDelete) = "removeOfficeFromAdmin($event)"></modal-delete>
+
+<offices-by-admin #officesByAdmin [(officesIdsToRemove)] ="officesIdsToRemove"
+                  [adminId]> = "adminId"</offices-by-admin>
+
 <div class="button-area form-group">
     <button (click)="saveChanges()" type="submit" class="btn btn-default pull-left">Save Changes</button>
-    <button (click)="onCancel()" class="btn btn-default pull-left cancel">Cancel</button>
+    <button (click)="officesByAdmin.onCancelChanges()" class="btn btn-default pull-left cancel">Cancel</button>
 </div>

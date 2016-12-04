@@ -22,7 +22,7 @@
     </div>
     <div class="form-group inline">
         <label for="City" class="center-block">City</label>
-        <input type="text" name="City" id="City"  class="form-control" [(ngModel)]="admin.City" placeholder="Enter City" required>
+        <input type="text" name="City" id="City"  class="form-control" [(ngModel)]="admin.city" placeholder="Enter City" required>
     </div>
     <div class="form-group inline margin">
         <label for="state" class="center-block">US State</label>
@@ -34,7 +34,7 @@
     </div>
     <div class="button-area form-group">
         <button type="submit" class="btn btn-default pull-left">Save Changes</button>
-        <button (click)="onCancel()" class="btn btn-default pull-left cancel">Cancel</button>
+        <button type="button" (click)="onCancel()" class="btn btn-default pull-left cancel">Cancel</button>
     </div>
 </form>
 

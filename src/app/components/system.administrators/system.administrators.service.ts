@@ -25,14 +25,17 @@ export class SystemAdministratorsService {
     getById(id: number) {
         return this.http.get('/api/admin/' + id).map((response: Response) => {
             //response.json()
-            // return Mock Data TODO: remove when api services will be avaliable
+            // return Mock Data TODO: remove when api services will be available
             return {
                 "id": 1,
                 "firstName": "Bob",
                 "lastName": "Smith",
                 "phone": "303-784-9834",
                 "email": "email@email.com",
-                "state": "CA"
+                "state": "CA",
+                "address": "1st Avenue",
+                "city": "San Francisco",
+                "zip": "95679"
             };
         });
     }

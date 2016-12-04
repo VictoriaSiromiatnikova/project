@@ -34,6 +34,7 @@ import { SystemAdministratorsComponent } from "./components/system.administrator
 import { SystemAdministratorComponent } from "./components/system.administrators/system.administrator/system.administrator.component";
 import { FormSidebarComponent } from "./shared/form.sidebar/form.sidebar.component";
 import { SystemAdministratorOfficesComponent } from "./components/system.administrators/system.administrator/system.administrator.offices.component";
+import { AdminsOfficesComponent } from "./components/offices/admins.offices/admins.offices.component";
 import { SystemAdministratorGeneralComponent } from "./components/system.administrators/system.administrator/system.administrator.general.component";
 //providers
 import { OfficeService } from "./components/offices/office.service";
@@ -79,6 +80,7 @@ type StoreType = {
     JurisdictionsComponent,
     FormSidebarComponent,
     SystemAdministratorOfficesComponent,
+    AdminsOfficesComponent,
     SystemAdministratorGeneralComponent
   ],
   imports: [ // import Angular's modules
