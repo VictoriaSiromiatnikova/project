@@ -9,6 +9,7 @@ import { Ng2TableModule } from 'ng2-table/ng2-table';
 import { PaginationModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { DropdownModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { ModalModule } from "ng2-modal";
+import { FormSidebarModule } from "./shared/form.sidebar/form.sidebar.module";
 
 
 /*
@@ -25,21 +26,21 @@ import { LoginComponent } from "./components/login/login.component";
 import { OfficesComponent} from "./components/offices/offices.component";
 import { OfficeComponent } from './components/offices/office.component';
 import { UsStatesComponent } from './shared/us.states/us.states.component';
-import { JurisdictionsComponent} from "./components/jurisdictions/jurisdictions.component";
+//import { JurisdictionsComponent} from "./components/jurisdictions/jurisdictions.component";
+import { JurisdictionsModule } from "./components/jurisdictions/jurisdictions.module";
 import { CustomTableComponent } from "./shared/table/custom.table.component";
 import { DeleteLinkTableComponent } from "./shared/table/delete.link.component";
 import { ModalDeleteComponent } from "./shared/modal/modal.delete.component";
 import { ModalComponent } from "./shared/modal/modal.component";
 import { SystemAdministratorsComponent } from "./components/system.administrators/system.administrators.component";
 import { SystemAdministratorComponent } from "./components/system.administrators/system.administrator/system.administrator.component";
-import { FormSidebarComponent } from "./shared/form.sidebar/form.sidebar.component";
 import { SystemAdministratorOfficesComponent } from "./components/system.administrators/system.administrator/system.administrator.offices.component";
 import { AdminsOfficesComponent } from "./components/offices/admins.offices/admins.offices.component";
 import { SystemAdministratorGeneralComponent } from "./components/system.administrators/system.administrator/system.administrator.general.component";
 //providers
 import { OfficeService } from "./components/offices/office.service";
 import { AuthenticationService } from "./shared/services/authentication.service";
-import { JurisdictionService } from "./components/jurisdictions/jurisdiction.service";
+//import { JurisdictionService } from "./components/jurisdictions/jurisdiction.service";
 import { StatesService } from "./shared/us.states/states.service";
 import { SystemAdministratorsService } from "./components/system.administrators/system.administrators.service";
 
@@ -77,8 +78,7 @@ type StoreType = {
     OfficesComponent,
     SystemAdministratorsComponent,
     SystemAdministratorComponent,
-    JurisdictionsComponent,
-    FormSidebarComponent,
+    //JurisdictionsComponent,
     SystemAdministratorOfficesComponent,
     AdminsOfficesComponent,
     SystemAdministratorGeneralComponent
@@ -90,6 +90,8 @@ type StoreType = {
     PaginationModule,
     DropdownModule,
     ReactiveFormsModule,
+    JurisdictionsModule,
+    FormSidebarModule,
     HttpModule,
     ModalModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
@@ -99,7 +101,7 @@ type StoreType = {
     APP_PROVIDERS,
     AuthenticationService,
     OfficeService,
-    JurisdictionService,
+   // JurisdictionService,
     StatesService,
     SystemAdministratorsService
   ]

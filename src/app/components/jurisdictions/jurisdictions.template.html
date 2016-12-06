@@ -1,7 +1,8 @@
 <div class="center-block main-area offices-area">
     <h2>All Jurisdictions <em>Jurisdictions {{totalItems}}</em></h2>
     <p><button class="btn btn-primary">Create New Jurisdiction</button></p>
-    <custom-table [columns]="jurisdictionService.tableColumns"
+    <formsidebar></formsidebar>
+    <!--<custom-table [columns]="jurisdictionService.tableColumns"
                  [config]="jurisdictionService.tableConfig"
                  [data]="data"
                  [totalItems]="totalItems"
@@ -9,5 +10,5 @@
                  (onEdit)="onEditClick($event)"></custom-table>
     <modal-delete #deleteModal
                  [formErrors] = "formErrors"
-                 (onDelete) = "removeJurisdiction($event)"></modal-delete>
+                 (onDelete) = "removeJurisdiction($event)"></modal-delete>-->
 </div>
